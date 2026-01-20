@@ -23,3 +23,18 @@ data cleaning with a modern, intuitive interface.
 - **Frontend**: React 18, Vite, WebSocket
 - **Storage**: ChromaDB (vector database), Local file storage
 - **GPU Support**: CUDA-enabled PyTorch for faster inference
+
+#How to run
+(once you open the folder open terminal)
+1.python -m venv venv
+2.venv\Scripts\activate
+3.pip install -r backend/app/requirements.txt
+4.python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8001 --reload
+
+(click on frontend folder and open another new terminal)
+1.rm -r node_modules
+2.rm package-lock.json
+3.npm install
+4.npm run dev (if for server)
+
+(do not close any terminal of both)
