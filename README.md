@@ -288,7 +288,7 @@ Final Rule Set
     ├── README.md            # This file
     └── ...
     ```
-
+## How to Run
 2. **Backend setup** (Python):
    ```bash
    # Create and activate a virtual environment (optional but recommended)
@@ -311,24 +311,3 @@ Final Rule Set
 
    The UI will be available at `http://localhost:3000`.  It proxies API requests to `http://localhost:8001`.
 
-## Usage
-
-1. **Upload** – Choose a CSV or JSON file and click **Upload Dataset**.  The file is stored locally and a unique dataset ID is assigned.
-2. **Extract** – Click **Extract Rules** to generate heuristics from your data.  The list of rules (with IDs and types) is displayed.  Proceed to the next step.
-3. **Manage** – Review the extracted rules.  Use the checkboxes to enable or disable individual rules; click the **Delete** button to remove a rule entirely.  All enabled rules will be applied by default.
-4. **Validate** – Click **Validate Dataset** to see how many rows violate each rule.  Use this information to decide which rules to apply.
-5. **Apply** – Click **Apply Selected Rules** to repair the dataset with the enabled rules.  The cleaned data is displayed, along with a per‑rule breakdown of modifications.  Download the cleaned data as CSV or Excel, and view a bar chart summarising the number of modifications per rule type.
-
-## Extending
-
-To support new rule types or customised cleaning behaviours, extend the functions in `backend/app/services/rule_extractor.py` and update the apply engine in `backend/app/services/apply_engine.py`.  Each rule should include an `id` and `type` key.  The frontend will automatically display any new rules and modifications.  For conditional or domain‑specific logic, integrate your own functions or external ontologies.  The rule store can be extended to persist metadata or version rules in a database instead of JSON files.
-
-## Known Limitations
-
-- The heuristics for regex, functional dependencies and inclusion dependencies are approximate and may produce false positives on complex datasets.  They should be reviewed before use in production.
-- Repair actions for outliers, regex and inclusion dependencies default to clamping or nullifying values.  More sophisticated fixes could be implemented.
-- The UI is built for demonstration purposes.  For production use, you may want to add authentication, persistent storage and a more robust state management solution.
-
-## License
-
-This project is provided “as is” for educational purposes.  Feel free to adapt it to your needs.
